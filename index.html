@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Official Noctis Peptide Reconstitution and Dosing Calculator"
+  />
+
+  <title>Noctis Peptide Calculator</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="app-shell">
+
+    <header class="brand-header">
+      <div class="monogram">N</div>
+
+      <div>
+        <h1>NOCTIS</h1>
+        <p class="brand-subtitle">Peptide Calculator</p>
+      </div>
+    </header>
+
+    <section class="intro-panel">
+      <h2>Peptide Reconstitution & Dosing Calculator</h2>
+
+      <p>
+        Enter the vial amount, reconstitution volume, desired dose,
+        and syringe type to calculate the required draw volume and
+        syringe measurement.
+      </p>
+    </section>
+
+    <section class="calculator-card">
+
+      <form id="calculator-form" novalidate>
+
+        <div class="form-grid">
+
+          <div class="field-group">
+            <label for="peptideAmount">
+              Total Peptide Amount
+            </label>
+
+            <div class="input-row">
+              <input
+                type="number"
+                id="peptideAmount"
+                min="0"
+                step="any"
+                placeholder="10"
+                required
+              />
+
+              <select id="peptideUnit">
+                <option value="mg">mg</option>
+                <option value="mcg">mcg</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="waterVolume">
+              Bacteriostatic Water Added
+            </label>
+
+            <div class="input-row">
+              <input
+                type="number"
+                id="waterVolume"
+                min="0"
+                step="any"
+                placeholder="2"
+                required
+              />
+
+              <span class="unit-box">mL</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="targetDose">
+              Target Dose Per Administration
+            </label>
+
+            <div class="input-row">
+              <input
+                type="number"
+                id="targetDose"
+                min="0"
+                step="any"
+                placeholder="250"
+                required
+              />
+
+              <select id="doseUnit">
+                <option value="mcg">mcg</option>
+                <option value="mg">mg</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="syringeType">
+              Syringe Type
+            </label>
+
+            <select id="syringeType" class="full-width">
+              <option value="100">
+                U-100 Insulin Syringe
+              </option>
+
+              <option value="40">
+                U-40 Insulin Syringe
+              </option>
+            </select>
+          </div>
+
+        </div>
+
+        <button type="submit" class="calculate-button">
+          Calculate
+        </button>
+
+        <button
+          type="button"
+          id="resetButton"
+          class="reset-button"
+        >
+          Reset
+        </button>
+
+      </form>
+
+      <div
+        id="errorMessage"
+        class="error-message"
+        role="alert"
+        hidden
+      ></div>
+
+    </section>
+
+    <section id="results" class="results-card" hidden>
+
+      <p class="results-label">
+        CALCULATION RESULT
+      </p>
+
+      <div class="result-row">
+        <span>Concentration</span>
+        <strong id="concentrationResult">—</strong>
+      </div>
+
+      <div class="result-row">
+        <span>Required Draw Volume</span>
+        <strong id="volumeResult">—</strong>
+      </div>
+
+      <div class="result-row">
+        <span>Syringe Measurement</span>
+        <strong id="syringeResult">—</strong>
+      </div>
+
+      <div class="formula-panel">
+        <p class="formula-title">
+          Calculation
+        </p>
+
+        <code id="formulaResult"></code>
+      </div>
+
+    </section>
+
+    <footer>
+      <p>
+        Calculations are provided for informational and structural
+        verification based on user inputs. Noctis does not provide
+        medical advice. Consult a healthcare professional or official
+        pharmacy guidelines for clinical dosing protocols.
+      </p>
+    </footer>
+
+  </main>
+
+  <script src="calculator.js"></script>
+</body>
+</html>
