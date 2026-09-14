@@ -486,3 +486,44 @@ footer p {
       left;
   }
 }
+
+.lab-link {
+  margin-left: auto;
+  padding: 11px 15px;
+  border: 1px solid rgba(184, 167, 139, 0.28);
+  border-radius: 999px;
+  color: var(--champagne-silver);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.lab-link span {
+  margin-right: 7px;
+  padding: 3px 6px;
+  border-radius: 999px;
+  color: var(--text-primary);
+  background: var(--shadow-plum);
+  font-size: 8px;
+}
+
+.lab-link:hover {
+  border-color: var(--champagne-silver);
+  background: rgba(184, 167, 139, 0.06);
+}
+
+@media (max-width: 640px) {
+  .brand-header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .lab-link {
+    width: 100%;
+    margin-top: 14px;
+    text-align: center;
+  }
+}
