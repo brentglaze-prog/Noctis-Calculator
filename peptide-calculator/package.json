@@ -1,0 +1,12 @@
+{
+  "name": "noctis-guided-peptide-calculator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test math.test.mjs guided.test.mjs",
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "30.1.2"
+  }
+}

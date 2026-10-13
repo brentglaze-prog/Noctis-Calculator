@@ -25,3 +25,9 @@ Existing public Worker: `noctis-coaching` (Cloudflare). The public source tree i
 Baseline live version before this change: `a9e8c169-724b-42cb-9d86-fed93e9b908f`; deployment `928fd481-7ad1-41af-8701-221b037a4dad`. That version supports rollback. Future full public-site builds must incorporate or reapply this integration; an upload replacing the complete module set can otherwise remove the calculator.
 
 No patient entries or runtime secrets belong in this repository.
+
+## Guided flow update
+
+Four steps now collect vial information, liquid volume, dose with an explicit mg/mcg choice (neither preselected), and a picture-based syringe choice (none preselected). A review table and an unchecked confirmation checkbox precede calculation. The result includes the calculated marking, a proportionally accurate SVG scale, mL volume, dose conversion, concentration, and the actual arithmetic for cross-checking. Between-marking results stop before showing a syringe target. Help is expandable, edits invalidate the review/result, and Start over resets all choices. SVGs are explicitly labeled as illustrations, not life-size.
+
+For the guided interface tests, run `npm install` inside `peptide-calculator`, then `npm test`. Run `npm run build` to regenerate the page and Worker payload. Five additional DOM interaction tests verify required choices, review confirmation, correct SVG/math output, capacity/marking blockers, and premixed/reset behavior.

@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+const path=name=>fileURLToPath(new URL(name,import.meta.url));
+const existing=readFileSync(path('index.html'),'utf8');
+const start=existing.indexOf('<div class="calc-shell');
+const end=existing.indexOf('<footer',start);
+if(start<0||end<start)throw new Error('Existing site chrome not found; inspect the template.');
+writeFileSync(path('index.html'),existing.slice(0,start)+readFileSync(path('content.html'),'utf8')+existing.slice(end));
+const files=Object.fromEntries(['index.html','resources.html','math.mjs','client.mjs','style.css'].map(name=>[name,readFileSync(path(name),'utf8')]));
+writeFileSync(path('files.mjs'),'export const files = '+JSON.stringify(files)+';\n');
