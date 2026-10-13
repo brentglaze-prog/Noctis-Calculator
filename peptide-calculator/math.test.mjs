@@ -1,0 +1,12 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {calculate, format} from './math.mjs';
+const base={mode:'vial',vialMg:10,volumeMl:2,dose:250,doseUnit:'mcg',capacityMl:.3,scale:'u100',increment:1};
+test('mg/mcg conversion and U-100 marking',()=>{const r=calculate(base);assert.equal(r.ml,.05);assert.equal(r.marking,5);assert.equal(r.doseMg,.25);assert.equal(r.dosesPerVial,40);assert.equal(r.measurable,true);assert.deepEqual(calculate({...base,dose:.25,doseUnit:'mg'}),r);});
+test('labeled concentration equals vial calculation',()=>{assert.equal(calculate({...base,mode:'concentration',concentrationMgMl:5}).ml,.05);});
+test('unit markings never change with barrel size',()=>{for(const capacityMl of [.3,.5,1]) assert.equal(calculate({...base,capacityMl}).marking,5);});
+test('mL syringes use mL rather than U-100 markings',()=>{const r=calculate({...base,scale:'ml',capacityMl:1,increment:.01});assert.equal(r.marking,.05);assert.equal(r.measurable,true);});
+test('fractional results are retained and flagged, never rounded to a line',()=>{const r=calculate({...base,dose:260});assert.equal(r.marking,5.2);assert.equal(r.measurable,false);assert.equal(calculate({...base,dose:275,increment:.5}).measurable,true);});
+test('reject syringe overflow, insufficient vial, and invalid inputs',()=>{assert.ok(calculate({...base,dose:2000}).error);assert.ok(calculate({...base,dose:11000,capacityMl:3}).error);for(const n of [0,-1,NaN,Infinity]) for(const key of ['vialMg','volumeMl','dose','capacityMl','increment']) assert.ok(calculate({...base,[key]:n}).error);assert.ok(calculate({...base,mode:'concentration',concentrationMgMl:0}).error);assert.ok(calculate({...base,doseUnit:'IU'}).error);});
+test('capacity boundaries and decimal increments are robust',()=>{const r=calculate({...base,dose:1500});assert.equal(r.ml,.3);assert.equal(r.measurable,true);assert.equal(calculate({...base,mode:'concentration',concentrationMgMl:3,dose:600,scale:'ml',capacityMl:3,increment:.1}).measurable,true);});
+test('small values do not display as zero and arithmetic overflow is blocked',()=>{assert.notEqual(format(.0000001),'0');assert.ok(calculate({...base,vialMg:Number.MIN_VALUE,volumeMl:Number.MAX_VALUE}).error);});
