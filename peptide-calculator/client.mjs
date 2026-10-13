@@ -30,7 +30,8 @@ function syncSyringe() {
 form.addEventListener('input', clearResult);
 field('mode').addEventListener('change', syncMode);
 field('syringe').addEventListener('change', syncSyringe);
-form.addEventListener('reset', () => { queueMicrotask(() => { syncMode(); syncSyringe(); }); });
+// Run after the browser's default reset action has restored all field values.
+form.addEventListener('reset', () => { setTimeout(() => { syncMode(); syncSyringe(); }, 0); });
 for (const button of document.querySelectorAll('[data-fill]')) button.addEventListener('click', () => { field(button.dataset.fill).value = button.dataset.value; clearResult(); });
 function add(tag, text, className) { const node = document.createElement(tag); node.textContent = text; if (className) node.className = className; result.append(node); return node; }
 form.addEventListener('submit', event => {
