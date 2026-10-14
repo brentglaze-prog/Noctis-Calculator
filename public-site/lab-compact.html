@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#09090b">
+  <meta name="description" content="An interactive NOCTIS learning experience for understanding vial amount, liquid volume, concentration, and syringe markings.">
+  <title>NOCTIS Reconstitution Lab</title>
+  <link rel="stylesheet" href="lab.css">
+<link rel="icon" type="image/svg+xml" href="/noctis-favicon-v2.svg"><link rel="apple-touch-icon" href="/noctis-touch-v2.png"><link rel="stylesheet" href="/_next/static/css/layout.CoB-0Wu1.css"><link rel="stylesheet" href="/site-compact-v2.css"><link rel="stylesheet" href="/tools-compact-v3.css"></head>
+<body class="lab-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="site-header"><a class="wordmark" href="/"><span>NOCTIS</span><small>COACHING</small></a><nav class="desktop-nav" aria-label="Primary navigation"><a href="/coaching">Coaching</a><a href="/method">Method</a><a href="/learning-lab/reconstitution/">Learning Lab</a><a href="/resources">Resources</a><a href="/contact">Consultation</a></nav><a class="consult-nav" href="/contact">Request consultation <span aria-hidden="true">↗</span></a><nav class="header-portals" aria-label="Portal access"><a class="header-login header-login-secondary" href="https://portal.noctiscoaching.com/app/">Staff Login</a><a class="header-login" href="https://portal.noctiscoaching.com/mobile/">Client Login</a></nav><details class="mobile-menu"><summary aria-label="Open navigation"><span></span><span></span></summary><nav aria-label="Mobile navigation"><a href="/coaching">Coaching</a><a href="/method">Method</a><a href="/learning-lab/reconstitution/">Learning Lab</a><a href="/resources">Resources</a><a href="/contact">Consultation</a><a href="https://portal.noctiscoaching.com/app/">Staff Login ↗</a><a href="https://portal.noctiscoaching.com/mobile/">Client Login ↗</a></nav></details></header>
+
+  <main id="main">
+    <section class="hero" id="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span>NOCTIS LEARNING LAB</span><span>01 / RECONSTITUTION</span></p>
+        <h1>Understand<br><em>the vial.</em></h1>
+        <p class="hero-lede">Learn how total amount, liquid volume, concentration, and syringe markings relate through a guided visual experience.</p>
+        <div class="hero-actions">
+          <button class="button button-primary" id="enterLab" type="button">Enter the lab <span aria-hidden="true">→</span></button>
+          <span class="time-note">Six concepts · About five minutes</span>
+        </div>
+      </div>
+
+      <div class="hero-object" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="hero-vial">
+          <div class="hero-cap"></div>
+          <div class="hero-glass">
+            <div class="hero-label">
+              <small>TRAINING VIAL</small>
+              <strong>10 mg</strong>
+              <span>DRY COMPOUND</span>
+            </div>
+          </div>
+        </div>
+        <span class="spec spec-a">TOTAL CONTENT</span>
+        <span class="spec spec-b">CONCENTRATION: UNDEFINED</span>
+      </div>
+
+      <aside class="scope-note">
+        <span class="scope-icon" aria-hidden="true">i</span>
+        <p><strong>Educational scope</strong> This experience uses fictional examples to teach mathematical relationships only. It does not provide individualized dosing, preparation, injection, handling, storage, or sterility instructions. Do not use it to prepare, measure, or administer any substance.</p>
+      </aside>
+    </section>
+
+    <section class="lab-experience" id="labExperience" hidden aria-label="Interactive learning lab">
+      <div class="lab-topline">
+        <div>
+          <p class="eyebrow">YOUR PROGRESS</p>
+          <p class="progress-name" id="progressName">01 — Vial</p>
+        </div>
+        <p class="progress-count"><span id="progressCurrent">1</span> / 6</p>
+      </div>
+
+      <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+
+      <nav class="lesson-nav" id="lessonNav" aria-label="Lesson navigation">
+        <button type="button" data-lesson="0"><span>01</span>Vial</button>
+        <button type="button" data-lesson="1"><span>02</span>Volume</button>
+        <button type="button" data-lesson="2"><span>03</span>Concentration</button>
+        <button type="button" data-lesson="3"><span>04</span>Syringe</button>
+        <button type="button" data-lesson="4"><span>05</span>Verify</button>
+        <button type="button" data-lesson="5"><span>06</span>Challenge</button>
+      </nav>
+
+      <article class="lesson-stage" id="lessonStage" aria-live="polite"></article>
+
+      <div class="lesson-controls">
+        <button class="button button-quiet" id="previousLesson" type="button">← Previous</button>
+        <button class="button button-primary" id="nextLesson" type="button">Continue <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section class="completion" id="completion" hidden>
+      <p class="eyebrow">LAB COMPLETE</p>
+      <h2>You do not need to memorize the answer.</h2>
+      <p>You need to understand the relationship—and know how to verify it.</p>
+      <div class="completion-actions">
+        <a class="button button-primary" href="/resources">Return to resources <span aria-hidden="true">→</span></a>
+        <button class="button button-quiet" id="restartLab" type="button">Restart lab</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <span class="brand-mark small" aria-hidden="true">N</span>
+      <div><strong>NOCTIS</strong><span>Built Beyond Baseline.</span></div>
+    </div>
+    <p>This educational tool is not medical advice and is not a substitute for instructions from a licensed prescriber or dispensing pharmacy. Do not use training examples as personal dosing, preparation, measurement, or administration directions.</p>
+    <p class="copyright">© <span id="year"></span> NOCTIS Coaching</p>
+  </footer>
+
+  <dialog class="why-dialog" id="whyDialog" aria-labelledby="whyTitle">
+    <button class="dialog-close" id="closeDialog" type="button" aria-label="Close explanation">×</button>
+    <p class="eyebrow">TEACH ME WHY</p>
+    <h2 id="whyTitle"></h2>
+    <div id="whyBody"></div>
+  </dialog>
+
+  <div class="sr-only" id="liveRegion" aria-live="polite"></div>
+  <script src="lab.js"></script>
+</body>
+</html>
