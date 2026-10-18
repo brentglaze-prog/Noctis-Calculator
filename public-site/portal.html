@@ -5,8 +5,7 @@
 <div class="portal-page-layout">
 <div class="portal-page-copy"><p class="portal-eyebrow">YOUR NOCTIS PORTAL</p><h1 id="portal-title">Your coaching,<br><em>connected.</em></h1>
 <p class="portal-page-description">Your plan, check-ins, and progress. One place to keep your coaching moving between conversations.</p>
-<a class="visual-cta" href="/contact">Request consultation<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
-<p class="portal-consult-note">We’ll walk you through it during your consultation.</p></div>
+</div>
 <div class="portal-preview">
 <div class="portal-view-switch" aria-label="Choose a portal screen" hidden>
 <button type="button" id="plan-button" aria-pressed="true" aria-controls="plan-screen">Training plan</button>
@@ -19,6 +18,8 @@
 <a href="/assets/noctis-client-checkin-demo-v1.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge the check-in screenshot"><img src="/assets/noctis-client-checkin-demo-v1.jpg" width="1363" height="936" alt="Real NOCTIS client check-in form containing clearly labeled demonstration data"><span>Enlarge check-in <span aria-hidden="true">↗</span></span></a>
 <figcaption><strong>Keep your coach in the loop.</strong><span>Share progress, recovery, and questions through check-ins.</span></figcaption></figure>
 <p class="portal-demo-note">Real portal screens · Demo account with sample data.</p>
+<div class="portal-page-next"><a class="visual-cta" href="/contact">Request consultation<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+<p class="portal-consult-note">We’ll walk you through it during your consultation.</p></div>
 </div></div></section></main><footer class="visual-footer"><small>© 2026 NOCTIS Coaching</small><p>Coaching supports your goals and does not replace individualized medical care.</p></footer>
 <script>
 (()=>{const controls=document.querySelector('.portal-view-switch');const buttons=Array.from(controls.querySelectorAll('button'));const screens=buttons.map(button=>document.getElementById(button.getAttribute('aria-controls')));const show=index=>{buttons.forEach((button,i)=>{button.setAttribute('aria-pressed',String(i===index));screens[i].hidden=i!==index;});};buttons.forEach((button,index)=>button.addEventListener('click',()=>show(index)));show(0);controls.hidden=false;})();

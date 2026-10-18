@@ -49,3 +49,5 @@
 .portal-screen figcaption>span{font-size:11px}
 }
 @media(max-width:380px){.portal-page{padding-left:16px;padding-right:16px}.portal-page h1{font-size:32px}}
+
+.portal-page-next{margin-top:18px}
