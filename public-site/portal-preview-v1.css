@@ -1,0 +1,45 @@
+/* Compact introduction to the NOCTIS client portal. */
+.portal-intro{border:1px solid #b8a78b40;background:linear-gradient(120deg,#b8a78b0c,transparent);margin:16px 0 4px;color:#eee9df}
+.portal-intro>summary{display:flex;align-items:center;gap:18px;padding:19px 22px;cursor:pointer;list-style:none;min-height:108px}
+.portal-intro>summary::-webkit-details-marker{display:none}
+.portal-intro-icon{width:48px;flex:0 0 48px;color:#c8b698}
+.portal-intro-icon svg{display:block;width:100%;height:auto}
+.portal-intro-heading{display:grid;gap:6px}
+.portal-intro-heading small{font-size:9px;line-height:1.3;letter-spacing:.19em;color:#c8b698}
+.portal-intro-heading strong{font:400 clamp(23px,2.4vw,29px)/1.1 Georgia,serif;letter-spacing:-.02em}
+.portal-intro-heading>span{font-size:12px;line-height:1.5;color:#bdb6ac}
+.portal-intro-toggle{font:400 28px/1 Georgia,serif;color:#c8b698;margin-left:auto;transition:transform .15s}
+.portal-intro[open] .portal-intro-toggle{transform:rotate(45deg)}
+.portal-intro>summary:focus-visible,.portal-benefit-note a:focus-visible,.portal-intro-next a:focus-visible{outline:2px solid #c8b698;outline-offset:4px}
+.portal-intro-content{padding:0 22px 20px}
+.portal-intro-content>p{font-size:13px;line-height:1.65;max-width:690px;color:#bdb6ac;margin:0 0 18px}
+.portal-benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;border-top:1px solid #b8a78b30;padding-top:18px}
+.portal-benefits article>span{font-size:9px;letter-spacing:.12em;color:#c8b698}
+.portal-benefits h3{font:400 22px/1.2 Georgia,serif;margin:9px 0;color:#eee9df}
+.portal-benefits p{font-size:12px;line-height:1.65;color:#bdb6ac;margin:0}
+.portal-intro-next{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:19px 0 12px;padding-top:15px;border-top:1px solid #b8a78b30}
+.portal-intro-next p{font-size:12px;line-height:1.55;margin:0;color:#bdb6ac}
+.portal-intro-next a{font-size:12px;line-height:1.5;color:#c8b698;text-decoration:none;white-space:nowrap}
+.portal-intro-next a:hover,.portal-benefit-note a:hover{text-decoration:underline}
+.portal-overview-note{font-size:10px;line-height:1.5;color:#9e978d}
+.coaching-hero-copy .portal-benefit-note{font-size:11px;line-height:1.5;color:#bdb6ac;max-width:470px;margin:12px 0 0}
+.portal-benefit-note a{color:#c8b698;text-decoration:none;white-space:nowrap}
+@media(max-width:900px){
+.portal-intro{margin-top:12px}
+.portal-intro>summary{min-height:92px;padding:15px 13px;gap:11px}
+.portal-intro-icon{width:33px;flex-basis:33px}
+.portal-intro-heading{gap:5px}
+.portal-intro-heading small{font-size:8px}
+.portal-intro-heading strong{font-size:22px}
+.portal-intro-heading>span{font-size:10px;line-height:1.45}
+.portal-intro-toggle{font-size:24px}
+.portal-intro-content{padding:0 14px 16px}
+.portal-intro-content>p{font-size:12px;margin-bottom:13px}
+.portal-benefits{grid-template-columns:1fr;gap:14px;padding-top:14px}
+.portal-benefits article{border-bottom:1px solid #b8a78b20;padding-bottom:12px}
+.portal-benefits article:last-child{border:0;padding-bottom:0}
+.portal-benefits h3{font-size:21px;margin:6px 0}
+.portal-intro-next{display:grid;gap:10px;margin-top:14px}
+.coaching-hero-copy .portal-benefit-note{font-size:10px;line-height:1.5;margin-top:10px}
+}
+@media(prefers-reduced-motion:reduce){.portal-intro-toggle{transition:none}}
