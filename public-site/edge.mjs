@@ -1,6 +1,6 @@
 import original from './noctis-peptide-edge.mjs';
 import {files} from './public-site/files.mjs';
-const pages={'/':'home.html','/coaching':'coaching.html','/coaching/health-coaching':'health-coaching.html','/coaching/personal-training':'personal-training.html','/coaching/bodybuilding-competition-prep':'bodybuilding-competition-prep.html','/method':'method.html','/labs':'labs.html','/resources':'resources.html','/contact':'contact.html','/learning-lab/reconstitution':'lab-compact.html'};
+const pages={'/':'home.html','/coaching':'coaching.html','/your-portal':'portal.html','/coaching/health-coaching':'health-coaching.html','/coaching/personal-training':'personal-training.html','/coaching/bodybuilding-competition-prep':'bodybuilding-competition-prep.html','/method':'method.html','/labs':'labs.html','/resources':'resources.html','/contact':'contact.html','/learning-lab/reconstitution':'lab-compact.html'};
 const common={'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin'};
 export default {async fetch(request,env,ctx){
  const url=new URL(request.url),path=url.pathname.length>1?url.pathname.replace(/\/$/,''):url.pathname;
