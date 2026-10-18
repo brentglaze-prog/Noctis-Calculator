@@ -43,3 +43,21 @@
 .coaching-hero-copy .portal-benefit-note{font-size:10px;line-height:1.5;margin-top:10px}
 }
 @media(prefers-reduced-motion:reduce){.portal-intro-toggle{transition:none}}
+
+/* Genuine browser screenshots, kept inside the expandable portal section. */
+.portal-real-screens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0 0 10px}
+.portal-real-screens figure{margin:0;min-width:0;border:1px solid #b8a78b40;background:#0c0b0d}
+.portal-real-screens figure>a{display:block;position:relative;text-decoration:none;overflow:hidden}
+.portal-real-screens img{display:block;width:100%;height:auto}
+.portal-real-screens figure>a>span{display:block;padding:8px 12px;font-size:10px;line-height:1.4;letter-spacing:.04em;color:#c8b698;border-top:1px solid #b8a78b30}
+.portal-real-screens figcaption{padding:10px 12px 13px;display:grid;gap:5px}
+.portal-real-screens figcaption strong{font:400 21px/1.2 Georgia,serif;color:#eee9df}
+.portal-real-screens figcaption>span{font-size:11px;line-height:1.5;color:#bdb6ac}
+.portal-real-screens a:focus-visible{outline:2px solid #c8b698;outline-offset:-3px}
+.portal-intro-content .portal-screens-note{font-size:10px;line-height:1.5;color:#a9a194;margin:0 0 18px}
+@media(max-width:900px){
+.portal-real-screens{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;padding-bottom:5px}
+.portal-real-screens figure{flex:0 0 87%;scroll-snap-align:start}
+.portal-real-screens figcaption strong{font-size:20px}
+
+}
