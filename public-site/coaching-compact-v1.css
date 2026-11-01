@@ -1,0 +1,67 @@
+/* Compact coaching pages: the consultation comes first; details open on demand. */
+.coaching-landing .coaching-hero{min-height:430px}
+.coaching-landing .coaching-hero-copy{padding:26px clamp(26px,4vw,56px)}
+.coaching-landing .coaching-hero-copy h1{font-size:clamp(36px,3.8vw,54px);margin-bottom:16px}
+.coaching-landing .coaching-hero-lead{line-height:1.6;margin-bottom:18px}
+.coaching-quick-details{max-width:1120px;margin:0 auto;padding:12px 32px 24px}
+.coaching-disclosure{border-top:1px solid #b8a78b40}
+.coaching-disclosure:last-child{border-bottom:1px solid #b8a78b40}
+.coaching-disclosure>summary{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:70px;padding:12px 0;cursor:pointer;list-style:none}
+.coaching-disclosure>summary::-webkit-details-marker{display:none}
+.coaching-disclosure>summary>span:first-child{display:grid;gap:4px}
+.coaching-disclosure strong{font:400 24px/1.15 Georgia,'Times New Roman',serif;letter-spacing:-.02em;color:#eee9df}
+.coaching-disclosure small{font-size:11px;line-height:1.4;color:#bdb6ac}
+.coaching-disclosure-icon{font:400 27px/1 Georgia,serif;color:#c8b698}
+.coaching-disclosure[open]>summary .coaching-disclosure-icon{transform:rotate(45deg)}
+.coaching-disclosure-content{padding:0 0 20px}
+.coaching-disclosure .coaching-reasons,.coaching-disclosure .coaching-delivery,.coaching-disclosure .coaching-final{max-width:none;padding:0;margin:0;border:0;background:transparent}
+.coaching-disclosure .coaching-section-heading{margin-bottom:16px}
+.coaching-disclosure .coaching-section-heading>.visual-kicker{display:none}
+.coaching-disclosure .coaching-section-heading h2,.coaching-disclosure .coaching-final h2{font-size:26px;line-height:1.2;margin-bottom:10px}
+.coaching-disclosure .reason-grid article{min-height:0;padding:20px}
+.coaching-disclosure .reason-grid article>span{margin-bottom:10px}
+.coaching-disclosure .reason-grid h3{font-size:22px}
+.coaching-disclosure .coaching-delivery{gap:28px}
+.coaching-disclosure .delivery-list article{padding:16px 0}
+.coaching-disclosure .coaching-final{gap:28px}
+@media(max-width:900px){
+.coaching-landing .site-header{min-height:60px;padding:6px 20px}
+.coaching-landing .wordmark span{font-size:21px}
+.coaching-landing .wordmark small{font-size:8px}
+.coaching-landing .coaching-hero{min-height:0}
+.coaching-landing .coaching-hero-image{height:clamp(150px,22svh,190px)}
+.coaching-landing .coaching-hero-copy{padding:0 22px 16px;margin-top:-6px}
+.coaching-landing .coaching-hero-copy .visual-back{min-height:28px;margin:0 0 4px;font-size:10px}
+.coaching-landing .coaching-hero-copy>.visual-kicker{margin-bottom:8px;font-size:8px}
+.coaching-landing .coaching-hero-copy h1{font-size:clamp(29px,7.6vw,34px);line-height:1.06;margin-bottom:12px}
+.coaching-landing .coaching-hero-lead{font-size:12px;line-height:1.55;margin-bottom:14px}
+.coaching-landing .coaching-hero-copy .visual-cta{min-height:46px;padding:11px 15px}
+.coaching-landing .coaching-hero-copy .visual-reassurance{font-size:10px;margin-top:7px}
+.coaching-quick-details{max-width:600px;padding:0 22px 14px}
+.coaching-disclosure>summary{min-height:61px;padding:10px 0}
+.coaching-disclosure strong{font-size:21px}
+.coaching-disclosure small{font-size:10px}
+.coaching-disclosure-content{padding-bottom:16px}
+.coaching-disclosure .coaching-section-heading h2,.coaching-disclosure .coaching-final h2{font-size:24px;line-height:1.2}
+.coaching-disclosure .reason-grid article{padding:15px}
+.coaching-disclosure .reason-grid article>span{margin-bottom:8px}
+.coaching-disclosure .reason-grid h3{font-size:20px;margin-bottom:6px}
+.coaching-disclosure .reason-grid p,.coaching-disclosure .delivery-list p{font-size:12px;line-height:1.6}
+.coaching-disclosure .delivery-list{margin-top:14px}
+.coaching-disclosure .delivery-list article{padding:13px 0;grid-template-columns:30px 1fr;gap:10px}
+.coaching-disclosure .coaching-final>div:last-child{margin-top:16px}
+.coaching-landing .visual-footer{padding:10px 22px 16px}
+.visual-coaching-page .visual-coaching{padding-top:8px}
+.visual-coaching-page .visual-back{min-height:28px;margin-bottom:5px}
+.visual-coaching-page .visual-coaching h1{font-size:32px;margin-bottom:10px}
+.visual-coaching-page .service-overview-message{font-size:12px;line-height:1.5;margin:8px 0 4px}
+.visual-coaching-page .service-examples-label{font-size:10px;margin-bottom:12px}
+.visual-coaching-page .visual-service-grid{gap:9px}
+.visual-coaching-page .visual-service-card{min-height:134px}
+.visual-coaching-page .visual-card-content{padding:14px;max-width:96%}
+.visual-coaching-page .visual-card-label{font-size:22px;margin-bottom:6px}
+.visual-coaching-page .visual-card-description{font-size:11.5px;line-height:1.45;max-width:310px}
+.visual-coaching-page .visual-card-action{font-size:10px;margin-top:5px;min-height:20px}
+.visual-coaching-page .visual-coaching-actions{margin:14px 0}
+.visual-coaching-page .visual-tools-link{margin-top:12px;padding-top:8px;min-height:42px}
+}

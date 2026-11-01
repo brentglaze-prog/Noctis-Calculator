@@ -1,0 +1,40 @@
+/* Homepage refinement: warm editorial details, with coaching as the primary action. */
+.visual-home-page .visual-home-copy{background:radial-gradient(ellipse at 8% 32%,#95734b0d,transparent 68%)}
+.home-service-menu{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);max-width:480px;margin:24px 0;border-top:1px solid #bca78445;border-bottom:1px solid #bca78445}
+.home-service-menu a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;min-width:0;padding:10px 0;color:#e9e1d5;text-decoration:none;font:400 20px/1.25 Georgia,'Times New Roman',serif;letter-spacing:-.02em;transition:color .18s,background .18s}
+.home-service-menu a:first-child{padding-right:18px}
+.home-service-menu a:nth-child(2){padding-left:18px;border-left:1px solid #bca78425}
+.home-service-menu a:last-child{grid-column:1/-1;border-top:1px solid #bca78425}
+.home-service-menu svg{width:16px;height:16px;flex-shrink:0;color:#bca784}
+.home-service-menu a:hover{color:#e5c697;background:#c7ac7e08}
+.visual-home-page .home-consultation{min-height:66px;padding:12px 14px 12px 20px;gap:12px;background:linear-gradient(110deg,#d1bea0,#bfa581);border:1px solid #d9c8aa;box-shadow:inset 0 1px 0 #f5e7ce60,0 8px 26px #0003;transition:background .18s,box-shadow .18s}
+.home-consultation-label{display:grid;gap:5px;min-width:0;text-align:left}
+.home-consultation-label small{font-size:8px;line-height:1.3;letter-spacing:.17em;font-weight:500;color:#403528}
+.home-consultation-label>span{font-size:12px;line-height:1.4;letter-spacing:.12em;font-weight:650;color:#171510}
+.home-consultation-arrow{display:flex;align-items:center;justify-content:center;width:36px;height:36px;flex-shrink:0;background:#30291f;color:#e7d6ba;border:1px solid #594a35}
+.visual-home-page .home-consultation-arrow svg{width:19px;height:19px}
+.visual-home-page .home-consultation:hover{background:linear-gradient(110deg,#ddccb1,#ccb28d);box-shadow:inset 0 1px 0 #f5e7ce70,0 9px 28px #0004}
+.visual-home-page .visual-reassurance{color:#c1b6a6;font-size:11px;letter-spacing:.015em}
+.visual-home-page .visual-secondary-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;margin-top:14px;border-bottom:1px solid #bca7842b}
+.visual-home-page .visual-secondary-actions .visual-explore{width:100%;justify-content:space-between;gap:8px;margin:0;padding:0 14px 0 0;min-height:42px;font-size:12px;color:#d4c2a4;text-decoration:none}
+.visual-home-page .visual-secondary-actions .visual-explore:last-child{padding:0 0 0 14px;border-left:1px solid #bca78425}
+.visual-home-page .visual-secondary-actions .visual-explore:hover{color:#f0dcc0}
+.visual-home-page .visual-tools{border-top:0;padding-top:0;margin-top:14px}
+@media(max-width:900px){
+.visual-home-page .visual-home-copy{margin-top:-22px;padding-top:8px}
+.visual-home-page .visual-hero:after{background:linear-gradient(0deg,#0b0b0d 0%,#0b0b0d26 55%,transparent 80%)}
+.home-service-menu{max-width:none;margin:18px 0 20px}
+.home-service-menu a{min-height:44px;font-size:18px;padding:9px 0}
+.home-service-menu a:first-child{padding-right:12px}
+.home-service-menu a:nth-child(2){padding-left:12px}
+.home-service-menu svg{width:14px;height:14px}
+.visual-home-page .home-consultation{min-height:62px;padding:10px 12px 10px 16px}
+.home-consultation-label small{font-size:7px;letter-spacing:.14em}
+.home-consultation-label>span{font-size:11px;letter-spacing:.11em}
+.visual-home-page .visual-reassurance{font-size:10px;margin-top:10px}
+.visual-home-page .visual-secondary-actions{margin-top:10px}
+.visual-home-page .visual-secondary-actions .visual-explore{font-size:11px;min-height:40px}
+.visual-home-page .visual-tools{margin-top:10px}
+}
+@media(max-width:360px){.home-service-menu a{font-size:16px;gap:6px}.home-service-menu a:first-child{padding-right:9px}.home-service-menu a:nth-child(2){padding-left:9px}.home-consultation-label>span{font-size:10px;letter-spacing:.08em}.home-consultation-label small{font-size:6.5px}.visual-home-page .visual-secondary-actions .visual-explore{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.home-service-menu a,.visual-home-page .home-consultation{transition:none}}
