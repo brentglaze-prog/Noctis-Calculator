@@ -1,0 +1,3 @@
+const cards=document.querySelectorAll('[data-service]');
+for(const card of cards){card.addEventListener('click',()=>{const dialog=document.getElementById('service-'+card.dataset.service);if(dialog&&!dialog.open)dialog.showModal();});}
+for(const dialog of document.querySelectorAll('.service-dialog')){dialog.querySelector('.dialog-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});}

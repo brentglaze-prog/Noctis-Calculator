@@ -1,9 +1,12 @@
 import original from './noctis-peptide-edge.mjs';
 import {files} from './public-site/files.mjs';
+import {processLeadEmailJobs,queueLeadEmails} from './lead-email.mjs';
 const pages={'/':'home.html','/coaching':'coaching.html','/your-portal':'portal.html','/coaching/health-coaching':'health-coaching.html','/coaching/personal-training':'personal-training.html','/coaching/bodybuilding-competition-prep':'bodybuilding-competition-prep.html','/method':'method.html','/labs':'labs.html','/resources':'resources.html','/contact':'contact.html','/learning-lab/reconstitution':'lab-compact.html'};
 const common={'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin'};
+const retry=message=>Response.json({error:message},{status:503,headers:common});
 export default {async fetch(request,env,ctx){
  const url=new URL(request.url),path=url.pathname.length>1?url.pathname.replace(/\/$/,''):url.pathname;
+ if(url.hostname==='noctiscoaching.com'&&['GET','HEAD'].includes(request.method)){url.hostname='www.noctiscoaching.com';return Response.redirect(url.toString(),301);}
  if(['GET','HEAD'].includes(request.method)){
   if(['/favicon.svg','/favicon.ico','/noctis-favicon-v2.svg'].includes(path))return new Response(request.method==='HEAD'?null:files['noctis-favicon-v2.svg'],{headers:{...common,'Content-Type':'image/svg+xml'}});
   if(path==='/noctis-touch-v2.png'||path==='/icon.png'||path==='/apple-touch-icon.png'){
@@ -13,10 +16,19 @@ export default {async fetch(request,env,ctx){
   if(/\.(webp|jpg)$/.test(name)&&Object.hasOwn(files,name)){const bytes=Uint8Array.from(atob(files[name]),c=>c.charCodeAt(0));return new Response(request.method==='HEAD'?null:bytes,{headers:{...common,'Cache-Control':'public,max-age=31536000,immutable','Content-Type':name.endsWith('.jpg')?'image/jpeg':'image/webp'}});}
   if(Object.hasOwn(files,name)&&!name.endsWith('.png'))return new Response(request.method==='HEAD'?null:files[name],{headers:{...common,'Content-Type':name.endsWith('.html')?'text/html; charset=utf-8':name.endsWith('.css')?'text/css; charset=utf-8':'text/javascript; charset=utf-8'}});
  }
+ const acceptedInquiry=path==='/api/inquiries'&&request.method==='POST'?request.clone().json().catch(()=>null):null;
  let response=await original.fetch(request,env,ctx);
+ if(acceptedInquiry&&response.ok){
+  const [inquiry,result]=await Promise.all([acceptedInquiry,response.clone().json().catch(()=>null)]);
+  if(result?.ok&&inquiry){
+   try{await queueLeadEmails(inquiry,env);ctx.waitUntil(processLeadEmailJobs(env));}
+   catch(error){console.warn('Lead email queue unavailable',error?.message);return retry('Your request was saved, but delivery confirmation is still pending. Please retry; it will not be duplicated.');}
+  }
+ }
  if(path.startsWith('/resources/peptide-calculator')&&response.headers.get('Content-Type')?.includes('text/html')){response=new HTMLRewriter().on('body',{element(e){e.setAttribute('class','calculator-page');}}).on('head',{element(e){e.append('<link rel="stylesheet" href="/tools-compact-v3.css">',{html:true});}}).transform(response);}
  if(request.method==='GET'&&response.headers.get('Content-Type')?.includes('text/html')){
-  return new HTMLRewriter().on('link[rel="icon"]',{element(e){e.setAttribute('href','/noctis-favicon-v2.svg');e.setAttribute('type','image/svg+xml');}}).on('link[rel="apple-touch-icon"]',{element(e){e.setAttribute('href','/noctis-touch-v2.png');}}).on('head',{element(e){e.append('<link rel="stylesheet" href="/site-compact-v2.css">',{html:true});}}).on('.desktop-nav',{element(e){e.append('<a href="/labs">Labs &amp; bloodwork</a>',{html:true});}}).on('.mobile-menu nav',{element(e){e.append('<a href="/labs">Labs &amp; bloodwork</a>',{html:true});}}).on('.site-header',{element(e){e.append('<a class="consult-nav" href="/contact">Request consultation ↗</a>',{html:true});}}).transform(response);
+  const navComplete=path.startsWith('/resources/peptide-calculator');
+  return new HTMLRewriter().on('link[rel="icon"]',{element(e){e.setAttribute('href','/noctis-favicon-v2.svg');e.setAttribute('type','image/svg+xml');}}).on('link[rel="apple-touch-icon"]',{element(e){e.setAttribute('href','/noctis-touch-v2.png');}}).on('head',{element(e){e.append('<link rel="stylesheet" href="/site-compact-v2.css">',{html:true});}}).on('.desktop-nav',{element(e){if(!navComplete)e.append('<a href="/labs">Labs &amp; bloodwork</a>',{html:true});}}).on('.mobile-menu nav',{element(e){if(!navComplete)e.append('<a href="/labs">Labs &amp; bloodwork</a>',{html:true});}}).on('.site-header',{element(e){e.append('<a class="consult-nav" href="/contact">Request consultation ↗</a>',{html:true});}}).transform(response);
  }
  return response;
-}};
+},async scheduled(controller,env,ctx){ctx.waitUntil(processLeadEmailJobs(env));if(typeof original.scheduled==='function')ctx.waitUntil(original.scheduled(controller,env,ctx));}};
