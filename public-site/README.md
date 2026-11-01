@@ -9,3 +9,9 @@ Compact homepage, Coaching, Method, Resources, and consultation form. All three 
 The form uses the existing `/api/inquiries` contract, consent, honeypot, request IDs, retry deduplication, and conditional phone number. It requests a consultation; it does not claim to book a calendar slot.
 
 Edit the HTML, CSS, or client module, then regenerate `files.mjs` from those files. `build.py` generates the pages from retained site chrome; do not use generated pages as the original input for repeated template changes. No secrets or patient data are stored here.
+
+## Deployment map (verified 2026-11-01)
+
+- `noctis-coaching` Worker: routes `www.noctiscoaching.com/*` and `noctiscoaching.com/*`. Main module `noctis-public-edge.mjs` (= `edge.mjs` here), plus `public-site/files.mjs`, `peptide-calculator/files.mjs`, `lead-email.mjs`, and the retained Next.js bundle (`index.js`, not in this repo). Bindings: ASSETS, INQUIRY_PORTAL_ORIGIN, INQUIRY_RELAY_SECRET (secret), LEAD_DELIVERY_DB (D1), LEAD_EMAIL, LEAD_OWNER_EMAIL.
+- `noctis-learning-lab` Worker: routes `/learning-lab/reconstitution` and `/learning-lab/reconstitution/` on both hosts, so it shadows `lab-compact.html` in `files.mjs`. Single module `lab-edge.mjs`.
+- Ship changes as a version upload (keeps bindings and assets), check the version's preview URL, then deploy that version. The `content/v2` API returns the latest uploaded version, which is not necessarily the deployed one.
